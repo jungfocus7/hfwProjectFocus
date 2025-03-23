@@ -304,7 +304,7 @@ namespace hfwCustomElements
             double tx = tss * m_hspr;
             m_rctThumb.X = tx;
 
-            prApplyRectThumb();
+            prApplyRectThumb(HeScrollType.Horizontal);
             prPrintSpanLog();
         }
 
@@ -329,7 +329,7 @@ namespace hfwCustomElements
             double ty = tss * m_vspr;
             m_rctThumb.Y = ty;
 
-            prApplyRectThumb();
+            prApplyRectThumb(HeScrollType.Vertical);
             prPrintSpanLog();
         }
 
@@ -423,9 +423,9 @@ namespace hfwCustomElements
             return df;
         }
 
-        private void prApplyRectThumb(bool bFirst = false)
+        private void prApplyRectThumb(HeScrollType type)
         {
-            if (bFirst || (LogicType == HeScrollType.Both))
+            if (type == HeScrollType.Both)
             {
                 m_elThumb.Width = m_rctThumb.Width;
                 m_elThumb.Height = m_rctThumb.Height;
@@ -433,13 +433,13 @@ namespace hfwCustomElements
                 SetLeft(m_elThumb, m_rctThumb.Left);
                 SetTop(m_elThumb, m_rctThumb.Top);
             }
-            else if (LogicType == HeScrollType.Horizontal)
+            else if (type == HeScrollType.Horizontal)
             {
                 m_elThumb.Width = m_rctThumb.Width;
 
                 SetLeft(m_elThumb, m_rctThumb.Left);
             }
-            else if (LogicType == HeScrollType.Vertical)
+            else if (type == HeScrollType.Vertical)
             {
                 m_elThumb.Height = m_rctThumb.Height;
 
@@ -468,7 +468,7 @@ namespace hfwCustomElements
             m_rctThumb.Y = vss * m_vspr;
 
 
-            prApplyRectThumb(true);
+            prApplyRectThumb(HeScrollType.Both);
             prPrintSpanLog();
 
             Scroll?.Invoke(this, null);

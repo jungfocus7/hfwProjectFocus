@@ -1,0 +1,142 @@
+:read-only {
+  --gsw: 20px;
+  --gsh: 20px;
+}
+
+
+/** #~~~~~~~~~~  */
+html, body {
+  background-color: black;
+  margin: 0px; padding: 0px;
+  width: 100%; height: 100%;
+  font-family: 'Malgun Gothic', 'Consolas', 'monaco', 'monospace';
+  font-size: 0px; color: black;
+  overflow-x: hidden; overflow-y: hidden;
+  user-select: none;
+}
+
+
+div.app-root {
+  position: relative; display: block;
+  width: 100%; height: 100%;
+  margin: 0px; padding: 0px;
+  left: 0px; top: 0px;
+  background-color: black;
+  box-sizing: border-box;
+  border: 20px solid transparent;
+  overflow-x: auto; overflow-y: auto;
+  font-size: 0px; cursor: auto;
+}
+
+
+/** #~~~~~~~~~~  */
+div.view-box {
+  position: static; display: inline-block;
+  width: calc(100% - var(--gsw));
+  height: calc(100% - var(--gsh));
+  margin: 0px; padding: 0px;
+  left: 0px; top: 0px;
+  background-color: transparent;
+  overflow-x: hidden; overflow-y: hidden;
+  font-size: 0px; cursor: cell;
+  pointer-events: none;
+}
+
+div.body-cont {
+  position: relative; display: inline-block;
+  width: 1000px; height: 1000px;
+  margin: 0px; padding: 0px;
+  left: 0px; top: 0px;
+  background-color: whitesmoke;
+  background-image: url("./images/img41.png");
+  background-size: cover;
+  box-sizing: border-box;
+  border: 3px solid red;
+  overflow-x: hidden; overflow-y: hidden;
+  font-size: 0px; cursor: auto;
+  pointer-events: none;
+}
+
+/* div.body-cont>img.rimg {
+  position: static; display: block;
+  width: 100%; height: 100%;
+  margin: 0px; padding: 0px;
+  left: 0px; top: 0px;
+  background-color: darkmagenta;
+  overflow-x: hidden; overflow-y: hidden;
+  font-size: 0px; cursor: auto;
+  -webkit-user-drag: none;
+  image-rendering: pixelated;
+  box-sizing: border-box;
+  border: 3px solid red;
+  pointer-events: none;
+} */
+
+
+/** #~~~~~~~~~~  */
+div.bscr-cont {
+  position: absolute; display: block;
+  width: calc(100% - var(--gsw));
+  height: calc(100% - var(--gsh));
+  margin: 0px; padding: 0px;
+  left: 0px; top: 0px;
+  background-color: whitesmoke;
+  box-shadow: 0px 0px 10px darkslategrey inset;
+  opacity: 0.3;
+  overflow-x: hidden; overflow-y: hidden;
+  font-size: 0px; cursor: pointer;
+}
+
+div.hscr-cont {
+  position: absolute; display: block;
+  width: calc(100% - var(--gsw)); height: 20px;
+  margin: 0px; padding: 0px;
+  left: 0px; bottom: 0px;
+  background-color: whitesmoke;
+  box-shadow: 0px 0px 10px darkslategrey inset;
+  overflow-x: hidden; overflow-y: hidden;
+  font-size: 0px; cursor: pointer;
+  /* -webkit-box-shadow: inset 0 0 10px black;
+  -moz-box-shadow: inset 0 0 10px black; */
+  /* box-shadow: inset 0px 0px 20px #595959; */
+}
+
+div.vscr-cont {
+  position: absolute; display: block;
+  width: 20px; height: calc(100% - var(--gsh));
+  margin: 0px; padding: 0px;
+  right: 0px; top: 0px;
+  background-color: whitesmoke;
+  box-shadow: 0px 0px 10px darkslategrey inset;
+  overflow-x: hidden; overflow-y: hidden;
+  font-size: 0px; cursor: pointer;
+}
+
+
+
+/** #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  */
+/* svg.nara-svg {
+  position: absolute; display: block; z-index: 999;
+  width: calc(100% - 24px); height: calc(100% - 24px);
+  background-color: rgba(137, 43, 226, 0.37);
+  left: 2px; top: 2px; pointer-events: none;
+  user-select: none; -webkit-user-drag: none;
+}
+
+div.lot-info {
+  position: absolute; display: block; z-index: 999;
+  width: calc(100% - 24px); height: calc(100% - 24px);
+  background-color: rgba(137, 43, 226, 0.37);
+  left: 2px; top: 2px; pointer-events: none;
+  user-select: none; -webkit-user-drag: none;
+}
+div.lot-info>span {
+  position: absolute; display: inline; z-index: 999;
+  background-color: rgba(255, 0, 0, 0.384); color: whitesmoke;
+  font-size: 14px;
+}
+div.lot-info>.row-cont {
+  position: absolute; display: block;
+  width: 100%; height: 100%;
+  background-color: transparent;
+} */
