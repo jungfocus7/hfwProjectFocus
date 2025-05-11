@@ -33,19 +33,19 @@ const _gdo = Object.seal({
     /**
      * @type {HcScrollBar}
      */
-    scrollBarBoth: null,
+    scrbBoth: null,
 
 
     /**
      * @type {HcScrollBar}
      */
-    scrollBarHori: null,
+    scrbHori: null,
 
 
     /**
      * @type {HcScrollBar}
      */
-    scrollBarVert: null,
+    scrbVert: null,
 
 });
 
@@ -74,34 +74,35 @@ const fn_updateBodyLocation = (type) => {
 };
 
 (() => {
+    return;
     const rctViewport = fn_getRect(_gdo.heViewBox);
     const rctBody = fn_getRect(_gdo.heBody);
     _gdo.targetArea = new HcScrollTargetArea(rctViewport, rctBody);
 
-    _gdo.scrollBarBoth = new HcScrollBar(_gdo.targetArea, HeScrollType.both, 'bscr');
-    _gdo.scrollBarBoth.addEventListener(hfEventTypes.Scroll, () => {
+    _gdo.scrbBoth = new HcScrollBar(_gdo.targetArea, HeScrollType.both, 'bscr');
+    _gdo.scrbBoth.addEventListener(hfEventTypes.Scroll, () => {
         fn_updateBodyLocation(HeScrollType.both);
 
-        const hsr = _gdo.scrollBarBoth.getHoriScrollRatio();
-        const vsr = _gdo.scrollBarBoth.getVertScrollRatio();
-        _gdo.scrollBarHori.setHoriScrollRatio(hsr);
-        _gdo.scrollBarVert.setVertScrollRatio(vsr);
+        const hsr = _gdo.scrbBoth.getHoriScrollRatio();
+        const vsr = _gdo.scrbBoth.getVertScrollRatio();
+        _gdo.scrbHori.setHoriScrollRatio(hsr);
+        _gdo.scrbVert.setVertScrollRatio(vsr);
     });
 
-    _gdo.scrollBarHori = new HcScrollBar(_gdo.targetArea, HeScrollType.horizontal, 'hscr');
-    _gdo.scrollBarHori.addEventListener(hfEventTypes.Scroll, () => {
+    _gdo.scrbHori = new HcScrollBar(_gdo.targetArea, HeScrollType.horizontal, 'hscr');
+    _gdo.scrbHori.addEventListener(hfEventTypes.Scroll, () => {
         fn_updateBodyLocation(HeScrollType.horizontal);
 
-        const hsr = _gdo.scrollBarBoth.getHoriScrollRatio();
-        _gdo.scrollBarBoth.setHoriScrollRatio(hsr);
+        const hsr = _gdo.scrbHori.getHoriScrollRatio();
+        _gdo.scrbBoth.setHoriScrollRatio(hsr);
     });
 
-    _gdo.scrollBarVert = new HcScrollBar(_gdo.targetArea, HeScrollType.vertical, 'vscr');
-    _gdo.scrollBarVert.addEventListener(hfEventTypes.Scroll, () => {
+    _gdo.scrbVert = new HcScrollBar(_gdo.targetArea, HeScrollType.vertical, 'vscr');
+    _gdo.scrbVert.addEventListener(hfEventTypes.Scroll, () => {
         fn_updateBodyLocation(HeScrollType.vertical);
 
-        const vsr = _gdo.scrollBarBoth.getVertScrollRatio();
-        _gdo.scrollBarBoth.setVertScrollRatio(vsr);
+        const vsr = _gdo.scrbVert.getVertScrollRatio();
+        _gdo.scrbBoth.setVertScrollRatio(vsr);
     });
 
     window.addEventListener(hfEventTypes.Resize, () => {
@@ -110,19 +111,19 @@ const fn_updateBodyLocation = (type) => {
         // console.log(_gdo.scrollBarBoth.getVertScrollRatio());
 
         const rct = fn_getRect(_gdo.heViewBox);
-        console.log(rct);
+        // console.log(rct);
         _gdo.targetArea.updateViewportWidth(rct.width);
         _gdo.targetArea.updateViewportHeight(rct.height);
-        _gdo.targetArea.calcBodyLeft(_gdo.scrollBarBoth.getHoriScrollRatio());
-        _gdo.targetArea.calcBodyTop(_gdo.scrollBarBoth.getVertScrollRatio());
+        _gdo.targetArea.calcBodyLeft(_gdo.scrbBoth.getHoriScrollRatio());
+        _gdo.targetArea.calcBodyTop(_gdo.scrbBoth.getVertScrollRatio());
 
         let vwr = _gdo.targetArea.getViewportWidthRatio();
         let vhr = _gdo.targetArea.getViewportHeightRatio();
-        _gdo.scrollBarBoth.setHoriGroundRatio(vwr);
-        _gdo.scrollBarBoth.setVertGroundRatio(vhr);
+        _gdo.scrbBoth.setHoriGroundRatio(vwr);
+        _gdo.scrbBoth.setVertGroundRatio(vhr);
 
-        _gdo.scrollBarHori.setHoriGroundRatio(vwr);
-        _gdo.scrollBarVert.setVertGroundRatio(vhr);
+        _gdo.scrbHori.setHoriGroundRatio(vwr);
+        _gdo.scrbVert.setVertGroundRatio(vhr);
     });
 })();
 

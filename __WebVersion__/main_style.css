@@ -75,7 +75,7 @@ div.body-cont {
 
 /** #~~~~~~~~~~  */
 div.bscr-cont {
-  position: absolute; display: block;
+  position: absolute; display: none;
   width: calc(100% - var(--gsw));
   height: calc(100% - var(--gsh));
   margin: 0px; padding: 0px;
