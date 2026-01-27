@@ -348,8 +348,8 @@ namespace hfwCustomElements
             m_hspr = HcDoubleHelper.CheckRatio(tv);
 
             double tss = prCalcHoriScrollSize();
-            double ty = tss * m_hspr;
-            m_rctThumb.X = ty;
+            double tx = tss * m_hspr;
+            m_rctThumb.X = tx;
 
             SetLeft(m_elThumb, m_rctThumb.Left);
             prPrintSpanLog();
@@ -630,10 +630,21 @@ namespace hfwCustomElements
             Point mpt = Mouse.GetPosition(this);
             if (m_rctThumb.Contains(mpt))
             {
-                m_mdx = mpt.X - m_rctThumb.Left;
-                m_mdy = mpt.Y - m_rctThumb.Top;
+                if (LogicType == HeScrollType.Both)
+                {
+                    m_mdx = mpt.X - m_rctThumb.Left;
+                    m_mdy = mpt.Y - m_rctThumb.Top;
+                }
+                else if (LogicType == HeScrollType.Horizontal)
+                {
+                    m_mdx = mpt.X - m_rctThumb.Left;
+                }
+                else if (LogicType == HeScrollType.Vertical)
+                {
+                    m_mdy = mpt.Y - m_rctThumb.Top;
+                }
 
-                OnMouseMove(null);
+                //OnMouseMove(null);
             }
             else
             {
@@ -643,22 +654,26 @@ namespace hfwCustomElements
                     double ty = mpt.Y - (m_rctThumb.Height / 2);
 
                     prUpdateThumbLocation(tx, ty);
+
+                    m_mdx = mpt.X - m_rctThumb.Left;
+                    m_mdy = mpt.Y - m_rctThumb.Top;
                 }
                 else if (LogicType == HeScrollType.Horizontal)
                 {
                     double tx = mpt.X - (m_rctThumb.Width / 2);
 
                     prUpdateThumbLeft(tx);
+
+                    m_mdx = mpt.X - m_rctThumb.Left;
                 }
                 else if (LogicType == HeScrollType.Vertical)
                 {
                     double ty = mpt.Y - (m_rctThumb.Height / 2);
 
                     prUpdateThumbTop(ty);
-                }
 
-                m_mdx = mpt.X - m_rctThumb.Left;
-                m_mdy = mpt.Y - m_rctThumb.Top;
+                    m_mdy = mpt.Y - m_rctThumb.Top;
+                }
             }
 
             Mouse.Capture(this);
